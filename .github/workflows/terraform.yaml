@@ -1,0 +1,44 @@
+name: terraform
+on: 
+    workflow_dispatch: 
+        inputs:
+            mattias-input:
+                description: 'This is a description, a bad one.'
+                default: 'Språk'
+                required: false
+                type: string
+            karol-input:
+                type: choice
+                options:
+                    - Val1
+                    - Val2
+                    - Val3
+                default: 'Val2'
+                required: false
+env:
+    mattias-env: dev
+permissions: 
+    contents: write
+    id-token: write
+    actions: write
+defaults:
+    run:
+        shell: pwsh
+        working-directory: ${{ github.workspace }}/terraform
+jobs:
+    terraform-plan: 
+        name: terraformplan
+        runs-on: ubuntu-latest
+        environment: ${{ matrix.environment }}
+        # defaults:
+        #     run:
+        #         working-directory: ${{github.workspace}}
+        strategy:
+            matrix:
+                environment: 
+                    - dev
+                    - prod
+        steps:
+            - name: mybiggeststep
+              run: |
+                    write-host 'Testing testing' ${{ inputs.mattias-input }}
