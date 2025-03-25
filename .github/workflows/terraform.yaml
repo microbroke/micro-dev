@@ -43,4 +43,5 @@ jobs:
         steps:
             - name: mybiggeststep
               run: |
-                    write-host 'Testing testing' ${{ inputs.mattias-input }}
+                    write-host 'Testing testing ${{ inputs.mattias-input }}'
+                    write-host '${{inputs.karol-input}}'
