@@ -44,6 +44,6 @@ jobs:
               run: |
                     write-host 'Testing testing ${{ inputs.mattias-input }}'
                     write-host '${{inputs.karol-input}}'
-    terraform-trigger:
-        name: terraformtrigger
-        uses: microbroke/micro-dev/.github/workflows/trigger.yaml
+    # terraform-trigger:
+    #     name: terraformtrigger
+    #     uses: microbroke/micro-dev/.github/workflows/trigger.yaml
