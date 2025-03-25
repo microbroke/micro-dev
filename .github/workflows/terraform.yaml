@@ -26,15 +26,14 @@ permissions:
 defaults:
     run:
         shell: pwsh
-        # working-directory: ${{ github.workspace }}/terraform
 jobs:
     terraform-plan: 
         name: terraformplan
         runs-on: ubuntu-latest
         environment: ${{ matrix.environment }}
-        # defaults:
-        #     run:
-        #         working-directory: ${{github.workspace}}
+        defaults:
+            run:
+                working-directory: ${{github.workspace}}
         strategy:
             matrix:
                 environment: 
@@ -45,3 +44,6 @@ jobs:
               run: |
                     write-host 'Testing testing ${{ inputs.mattias-input }}'
                     write-host '${{inputs.karol-input}}'
+    terraform-trigger:
+        name: terraformtrigger
+        uses: microbroke/micro-dev/.github/workflows/trigger.yaml

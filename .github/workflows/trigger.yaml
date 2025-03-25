@@ -1,0 +1,34 @@
+name: terraformtrigger
+on: 
+    workflow_call: 
+    push:
+        branches: main
+env:
+    mattias-env: dev
+permissions: 
+    contents: write
+    id-token: write
+    actions: write
+defaults:
+    run:
+        shell: pwsh
+jobs:
+    terraform-plan: 
+        name: terraformtrigger
+        runs-on: ubuntu-latest
+        environment: ${{ matrix.environment }}
+        defaults:
+            run:
+                working-directory: ${{github.workspace}}
+        strategy:
+            matrix:
+                environment: 
+                    - dev
+                    - prod
+        steps:
+            - name: trigger-happy
+              run: |
+                    write-host 'Testing testing'
+                    write-host '${{github.actor}}'
+                    write-host '${{github.event}}'
+                    write-host '${{github.workflow}}'
