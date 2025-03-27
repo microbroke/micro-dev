@@ -15,6 +15,9 @@ on:
                     - Val3
                 default: 'Val2'
                 required: false
+            azcopy:
+                type: boolean
+                required: true
     push:
         branches: main
 env:
@@ -36,12 +39,20 @@ jobs:
             matrix:
                 environment: 
                     - dev
-                    - prod
+                    # - prod
         steps:
+            - uses: hashicorp/setup-terraform@v3
+              with: 
+                terraform_version: "1.11.2"
+            - uses: actions/checkout@v2
+            - uses: kheiakiyama/install-azcopy-action@v1
+              if: ${{inputs.azcopy}}
+              with:
+                version: 'v10'
             - name: mybiggeststep
               run: |
                     write-host 'Testing testing ${{ inputs.mattias-input }}'
                     write-host '${{ inputs.karol-input }}'
-    terraform-trigger:
-        name: terraformtrigger
-        uses: microbroke/micro-dev/.github/workflows/trigger.yaml@main
+    # terraform-trigger:
+    #     name: terraformtrigger
+    #     uses: microbroke/micro-dev/.github/workflows/trigger.yaml@main
