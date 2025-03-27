@@ -1,8 +1,8 @@
 name: terraformtrigger
 on: 
     workflow_call: 
-    push:
-        branches: main
+    # push:
+    #     branches: main
 env:
     mattias-env: dev
 permissions: 
