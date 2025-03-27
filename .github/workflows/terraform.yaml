@@ -40,6 +40,8 @@ jobs:
                 environment: 
                     - dev
                     # - prod
+        outputs:
+            kommerglassbilen: ${{steps.glassbilen.outputs.nagotannat}}
         steps:
             - uses: hashicorp/setup-terraform@v3
               if: false
@@ -61,18 +63,17 @@ jobs:
             - name: output
               run: |
                     write-host ${{steps.glassbilen.outputs.nagotannat}}
-        outputs:
-            kommerglassbilen: ${{steps.glassbilen.outputs.nagotannat}}
-    terraform-glass: 
-        runs-on: ubuntu-latest
-        needs: [terraform-plan]
-        defaults:
-            run:
-                shell: pwsh
-        steps:
-            - name: output
-              run: |
-                    write-host "${{needs.terraform-plan.outputs.kommerglassbilen}}"
+                    write-host ${{secrets.GITHUB_TOKEN}}
+    # terraform-glass: 
+    #     runs-on: ubuntu-latest
+    #     needs: [terraform-plan]
+    #     defaults:
+    #         run:
+    #             shell: pwsh
+    #     steps:
+    #         - name: output
+    #           run: |
+    #                 write-host "${{needs.terraform-plan.outputs.kommerglassbilen}}"
     # terraform-trigger:
     #     name: terraformtrigger
     #     uses: microbroke/micro-dev/.github/workflows/trigger.yaml@main
