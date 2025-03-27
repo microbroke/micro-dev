@@ -22,11 +22,8 @@ on:
         branches: main
 env:
     mattias-env: dev
-    GH_TOKEN: ${{ secrets.token }}
-permissions: 
-    contents: write
-    id-token: write
-    actions: write
+    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+permissions: write-all
 jobs:
     terraform-plan: 
         name: terraformplan
