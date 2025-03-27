@@ -42,6 +42,7 @@ jobs:
                     # - prod
         steps:
             - uses: hashicorp/setup-terraform@v3
+              if: false
               with: 
                 terraform_version: "1.11.2"
             - uses: actions/checkout@v2
@@ -50,9 +51,15 @@ jobs:
               with:
                 version: 'v10'
             - name: mybiggeststep
+              id: glassbilen
               run: |
                     write-host 'Testing testing ${{ inputs.mattias-input }}'
                     write-host '${{ inputs.karol-input }}'
+                    $variable='Glassbilen'
+                    "nagotannat=$variable" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+            - name: output
+              run: |
+                    write-host ${{steps.glassbilen.outputs.nagotannat}}
     # terraform-trigger:
     #     name: terraformtrigger
     #     uses: microbroke/micro-dev/.github/workflows/trigger.yaml@main
