@@ -65,15 +65,18 @@ jobs:
                     write-host ${{steps.glassbilen.outputs.nagotannat}}
                     write-host ${{secrets.GITHUB_TOKEN}}
                     $Token = "${{ secrets.GITHUB_TOKEN }}"
-                    $URL = "https://api.github.com/users/microbroke/repos"
+                    $URL = "https://api.github.com/repos/microbroke/micro-dev/actions/variables"
                     $headers = @{
                         "Authorization"        = "Bearer $Token"
                         "Accept"               = "application/vnd.github+json"
                         "X-GitHub-Api-Version" = "2022-11-28"
                         "User-Agent"           = "user"
                     }
-                    $Repos = Invoke-RestMethod -Method GET -URI $URL -Headers $headers
-                    $Repos.name
+                    $Body = ConvertTo-Json @{
+                    name    = "hej"
+                    value = "12345.abC"}
+                    $Repos = Invoke-RestMethod -Method POST -URI $URL -Headers $headers -Body $Body
+                    $Repos
     # terraform-glass: 
     #     runs-on: ubuntu-latest
     #     needs: [terraform-plan]
