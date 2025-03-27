@@ -64,18 +64,7 @@ jobs:
               run: |
                     write-host ${{steps.glassbilen.outputs.nagotannat}}
                     write-host ${{secrets.GITHUB_TOKEN}}
-                    $Token = "${{ secrets.token }}"
-                    $URL = "https://api.github.com/repos/microbroke/micro-dev/actions/variables"
-                    $headers = @{
-                        "Authorization"        = "Bearer $Token"
-                        "Accept"               = "application/vnd.github+json"
-                        "X-GitHub-Api-Version" = "2022-11-28"
-                    }
-                    $Body = ConvertTo-Json @{
-                    name    = "hej"
-                    value = "12345.abC"}
-                    $Repos = Invoke-RestMethod -Method POST -URI $URL -Headers $headers -Body $Body
-                    $Repos
+                    gh variable set grillkorv --body "kokt"
     # terraform-glass: 
     #     runs-on: ubuntu-latest
     #     needs: [terraform-plan]
