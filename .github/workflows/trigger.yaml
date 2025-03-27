@@ -28,5 +28,5 @@ jobs:
               run: |
                     write-host 'Testing testing'
                     write-host '${{github.actor}}'
-                    write-host '${{github.event}}'
+                    write-host '${{github.event.repository}}'
                     write-host '${{github.workflow}}'
