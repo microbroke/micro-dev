@@ -67,7 +67,7 @@ jobs:
                     $Token = "${{ secrets.GITHUB_TOKEN }}"
                     $URL = "https://api.github.com/repos/microbroke/micro-dev/actions/variables"
                     $headers = @{
-                        "Authorization"        = "Bearer $Token"
+                        "Authorization"        = "Bearer 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"
                         "Accept"               = "application/vnd.github+json"
                         "X-GitHub-Api-Version" = "2022-11-28"
                     }
