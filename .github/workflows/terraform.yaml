@@ -65,7 +65,7 @@ jobs:
                     write-host ${{steps.glassbilen.outputs.nagotannat}}
                     write-host ${{secrets.GITHUB_TOKEN}}
                     $Token = "${{ secrets.GITHUB_TOKEN }}"
-                    $URL = "https://api.github.com/orgs/microbroke/repos"
+                    $URL = "https://api.github.com/users/microbroke/repos"
                     $headers = @{
                         "Authorization"        = "Bearer $Token"
                         "Accept"               = "application/vnd.github+json"
