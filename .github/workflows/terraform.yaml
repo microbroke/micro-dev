@@ -42,7 +42,7 @@ jobs:
             kommerglassbilen: ${{steps.glassbilen.outputs.nagotannat}}
         steps:
             - uses: hashicorp/setup-terraform@v3
-              if: false
+              if: contains(runner.os, 'linux')
               with: 
                 terraform_version: "1.11.2"
             - uses: actions/checkout@v2
@@ -76,3 +76,8 @@ jobs:
     # terraform-trigger:
     #     name: terraformtrigger
     #     uses: microbroke/micro-dev/.github/workflows/trigger.yaml@main
+    #     needs:
+    #         terraform-plan
+    #     with:
+    #         ingen-lon: ${{needs.terraform-plan.result}}
+            

@@ -1,6 +1,10 @@
 name: terraformtrigger
 on: 
     workflow_call: 
+        inputs:
+            ingen-lon:
+                default: Val1
+                type: string
     # push:
     #     branches: main
 env:
