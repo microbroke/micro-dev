@@ -23,6 +23,10 @@ on:
 env:
     mattias-env: dev
     GH_TOKEN: ${{ secrets.TOKEN }}
+    AZURE_CLIENT_ID: ${{vars.CLIENT_ID}}
+    AZURE_SUBSCRIPTION_ID: ${{vars.SUB_ID}}
+    AZURE_TENANT_ID: ${{vars.TENANT_ID}}
+
 permissions: write-all
 jobs:
     terraform-plan: 
@@ -66,14 +70,16 @@ jobs:
                     write-host ${{vars.CLIENT_ID}}
                     write-host ${{vars.SUB_ID}}
                     write-host ${{vars.TENANT_ID}}
+                    az login --service-principal
             - name: Azure Login
               uses: Azure/login@v2.2.0
+              if: false
               with:
                 client-id: ${{vars.CLIENT_ID}}
                 subscription-id: ${{vars.SUB_ID}}
                 tenant-id: ${{vars.TENANT_ID}}
                 allow-no-subscriptions: true
-
+                
     # terraform-glass: 
     #     runs-on: ubuntu-latest
     #     needs: [terraform-plan]
