@@ -19,7 +19,7 @@ on:
                 type: boolean
                 required: true
     push:
-        branches: main
+        # branches: main
 env:
     mattias-env: dev
     GH_TOKEN: ${{ secrets.TOKEN }}
