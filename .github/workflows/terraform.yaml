@@ -80,6 +80,7 @@ jobs:
             - name: azbosse
               run: |
                 #    az group create -l swedencentral -n min-forsta-rg-01
+                   az group list
                    $aztoken=az account get-access-token -o tsv --query accessToken
                    write-host ($aztoken).Substring(500)
                 
