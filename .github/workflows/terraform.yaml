@@ -28,7 +28,7 @@ jobs:
     terraform-plan: 
         name: terraformplan
         runs-on: ubuntu-latest
-        environment: ${{ matrix.environment }}
+        # environment: ${{ matrix.environment }}
         defaults:
             run:
                 shell: pwsh
