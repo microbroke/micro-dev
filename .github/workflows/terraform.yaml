@@ -63,6 +63,13 @@ jobs:
                     write-host ${{steps.glassbilen.outputs.nagotannat}}
                     write-host ${{secrets.GITHUB_TOKEN}}
                     gh variable set grillkorv --body "kokt"
+            - name: Azure Login
+              uses: Azure/login@v2.2.0
+              with:
+                client-id: ${{vars.CLIENT_ID}}
+                subscription-id: ${{vars.SUB_ID}}
+                tenant-id: ${{vars.TENANT_ID}}
+
     # terraform-glass: 
     #     runs-on: ubuntu-latest
     #     needs: [terraform-plan]
