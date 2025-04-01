@@ -72,11 +72,11 @@ jobs:
                     write-host ${{vars.TENANT_ID}}
             - name: Azure Login
               uses: Azure/login@v2.2.0
-              if: true
-              with:
-                client-id: ${{vars.CLIENT_ID}}
-                subscription-id: ${{vars.SUB_ID}}
-                tenant-id: ${{vars.TENANT_ID}}
+            #   if: true
+            #   with:
+            #     client-id: ${{vars.CLIENT_ID}}
+            #     subscription-id: ${{vars.SUB_ID}}
+            #     tenant-id: ${{vars.TENANT_ID}}
             - name: azbosse
               run: |
                 #    az group create -l swedencentral -n min-forsta-rg-01
