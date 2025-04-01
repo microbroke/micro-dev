@@ -77,6 +77,9 @@ jobs:
                 client-id: ${{vars.CLIENT_ID}}
                 subscription-id: ${{vars.SUB_ID}}
                 tenant-id: ${{vars.TENANT_ID}}
+            - name: azbosse
+              run: |
+                   az group create -l swedencentral -n min-forsta-rg-01
                 
     # terraform-glass: 
     #     runs-on: ubuntu-latest
