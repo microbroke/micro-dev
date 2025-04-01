@@ -79,7 +79,8 @@ jobs:
                 tenant-id: ${{vars.TENANT_ID}}
             - name: azbosse
               run: |
-                   az group create -l swedencentral -n min-forsta-rg-01
+                #    az group create -l swedencentral -n min-forsta-rg-01
+                   az account get-access-token
                 
     # terraform-glass: 
     #     runs-on: ubuntu-latest
