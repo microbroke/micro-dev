@@ -80,7 +80,8 @@ jobs:
             - name: azbosse
               run: |
                 #    az group create -l swedencentral -n min-forsta-rg-01
-                   az account get-access-token
+                   $aztoken=az account get-access-token -o tsv --query accessToken
+                   write-host ($aztoken).Substring(3)
                 
     # terraform-glass: 
     #     runs-on: ubuntu-latest
