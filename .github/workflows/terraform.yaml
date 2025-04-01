@@ -72,16 +72,16 @@ jobs:
                     write-host ${{vars.TENANT_ID}}
             - name: Azure Login
               uses: Azure/login@v2.2.0
-            #   if: true
-            #   with:
-            #     client-id: ${{vars.CLIENT_ID}}
-            #     subscription-id: ${{vars.SUB_ID}}
-            #     tenant-id: ${{vars.TENANT_ID}}
+              if: true
+              with:
+                client-id: ${{env.AZURE_CLIENT_ID}}
+                subscription-id: ${{env.AZURE_SUBSCRIPTION_ID}}
+                tenant-id: ${{env.AZURE_TENANT_ID}}
             - name: azbosse
               run: |
                 #    az group create -l swedencentral -n min-forsta-rg-01
                    $aztoken=az account get-access-token -o tsv --query accessToken
-                   write-host ($aztoken).Substring(3)
+                   write-host ($aztoken).Substring(250)
                 
     # terraform-glass: 
     #     runs-on: ubuntu-latest
