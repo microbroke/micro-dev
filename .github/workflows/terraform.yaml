@@ -70,10 +70,9 @@ jobs:
                     write-host ${{vars.CLIENT_ID}}
                     write-host ${{vars.SUB_ID}}
                     write-host ${{vars.TENANT_ID}}
-                    az login --service-principal
             - name: Azure Login
               uses: Azure/login@v2.2.0
-              if: false
+              if: true
               with:
                 client-id: ${{vars.CLIENT_ID}}
                 subscription-id: ${{vars.SUB_ID}}
