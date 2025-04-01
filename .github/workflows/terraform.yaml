@@ -80,9 +80,10 @@ jobs:
             - name: azbosse
               run: |
                 #    az group create -l swedencentral -n min-forsta-rg-01
-                   az group list
+                   az group list -o tsv --query "[].name"
                    $aztoken=az account get-access-token -o tsv --query accessToken
-                   write-host ($aztoken).Substring(500)
+                   write-host ($aztoken).Substring(0,50)
+                   az group list -o tsv --query "[?name==min-forsta-rg-01]" 
                 
     # terraform-glass: 
     #     runs-on: ubuntu-latest
