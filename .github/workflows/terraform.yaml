@@ -69,6 +69,7 @@ jobs:
                 client-id: ${{vars.CLIENT_ID}}
                 subscription-id: ${{vars.SUB_ID}}
                 tenant-id: ${{vars.TENANT_ID}}
+                allow-no-subscriptions: true
 
     # terraform-glass: 
     #     runs-on: ubuntu-latest
