@@ -22,7 +22,7 @@ on:
         branches: main
 env:
     mattias-env: dev
-    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GH_TOKEN: ${{ secrets.TOKEN }}
 permissions: write-all
 jobs:
     terraform-plan: 
