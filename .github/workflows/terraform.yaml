@@ -36,7 +36,7 @@ jobs:
         defaults:
             run:
                 shell: pwsh
-                working-directory: ${{github.workspace}}
+                working-directory: ${{github.workspace}}/terraform
         strategy:
             matrix:
                 environment: 
