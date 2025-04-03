@@ -54,22 +54,22 @@ jobs:
               if: ${{inputs.azcopy}}
               with:
                 version: 'v10'
-            - name: mybiggeststep
-              id: glassbilen
-              run: |
-                    write-host 'Testing testing ${{ inputs.mattias-input }}'
-                    write-host '${{ inputs.karol-input }}'
-                    $variable='Glassbilen'
-                    echo "::add-mask::$variable"
-                    "nagotannat=$variable" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
-            - name: output
-              run: |
-                    write-host ${{steps.glassbilen.outputs.nagotannat}}
-                    write-host ${{secrets.GITHUB_TOKEN}}
-                    gh variable set grillkorv --body "kokt"
-                    write-host ${{vars.CLIENT_ID}}
-                    write-host ${{vars.SUB_ID}}
-                    write-host ${{vars.TENANT_ID}}
+            # - name: mybiggeststep
+            #   id: glassbilen
+            #   run: |
+            #         write-host 'Testing testing ${{ inputs.mattias-input }}'
+            #         write-host '${{ inputs.karol-input }}'
+            #         $variable='Glassbilen'
+            #         echo "::add-mask::$variable"
+            #         "nagotannat=$variable" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+            # - name: output
+            #   run: |
+            #         write-host ${{steps.glassbilen.outputs.nagotannat}}
+            #         write-host ${{secrets.GITHUB_TOKEN}}
+            #         gh variable set grillkorv --body "kokt"
+            #         write-host ${{vars.CLIENT_ID}}
+            #         write-host ${{vars.SUB_ID}}
+            #         write-host ${{vars.TENANT_ID}}
             - name: Azure Login
               uses: Azure/login@v2.2.0
               if: true
@@ -77,13 +77,15 @@ jobs:
                 client-id: ${{env.AZURE_CLIENT_ID}}
                 subscription-id: ${{env.AZURE_SUBSCRIPTION_ID}}
                 tenant-id: ${{env.AZURE_TENANT_ID}}
-            - name: azbosse
+            - name: terraform-plan
               run: |
                 #    az group create -l swedencentral -n min-forsta-rg-01
-                   az group list -o tsv --query "[].name"
-                   $aztoken=az account get-access-token -o tsv --query accessToken
-                   write-host ($aztoken).Substring(0,50)
-                   az group list -o tsv --query "[?name=='min-forsta-rg-01']"
+                #    az group list -o tsv --query "[].name"
+                #    $aztoken=az account get-access-token -o tsv --query accessToken
+                #    write-host ($aztoken).Substring(0,50)
+                #    az group list -o tsv --query "[?name=='min-forsta-rg-01'].name"
+                   terraform init
+                   terraform plan
                 
     # terraform-glass: 
     #     runs-on: ubuntu-latest
