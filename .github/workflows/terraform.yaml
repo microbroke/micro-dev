@@ -85,7 +85,7 @@ jobs:
                 #    $aztoken=az account get-access-token -o tsv --query accessToken
                 #    write-host ($aztoken).Substring(0,50)
                 #    az group list -o tsv --query "[?name=='min-forsta-rg-01'].name"
-                   terraform init -backend-config="storage_account_name=mystorageaccount"
+                   terraform init -backend-config="storage_account_name=$STORAGE_ACCOUNT_NAME"
                    terraform plan
                 
     # terraform-glass: 
