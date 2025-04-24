@@ -51,7 +51,7 @@ jobs:
             matrix:
                 environment: 
                     - dev
-                    - prod
+                    # - prod
         outputs:
             kommerglassbilen: ${{steps.glassbilen.outputs.nagotannat}}
         steps:
@@ -74,7 +74,7 @@ jobs:
             #         "nagotannat=$variable" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
             - name: output
               run: |
-                write-host ${{ toJson(github) }}
+                write-host '${{ toJson(github) }}'
             #         write-host ${{steps.glassbilen.outputs.nagotannat}}
             #         write-host ${{secrets.GITHUB_TOKEN}}
             #         gh variable set grillkorv --body "kokt"
