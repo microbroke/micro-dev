@@ -26,7 +26,7 @@ env:
     AZURE_CLIENT_ID: ${{vars.CLIENT_ID}}
     AZURE_SUBSCRIPTION_ID: ${{vars.SUB_ID}}
     AZURE_TENANT_ID: ${{vars.TENANT_ID}}
-    STORAGE_ACCOUNT_NAME: stterraform00001
+    STORAGE_ACCOUNT_NAME: sttfstate00001
 
 permissions: write-all
 jobs:
