@@ -107,8 +107,9 @@ jobs:
     #         ingen-lon: ${{needs.terraform-plan.result}}
     terraform-apply: 
         name: terraformapply
+        needs: terraform-plan
         runs-on: ubuntu-latest
-        # environment: ${{ matrix.environment }}
+        environment: ${{ matrix.environment }}
         defaults:
             run:
                 shell: pwsh
