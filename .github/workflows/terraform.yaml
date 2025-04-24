@@ -117,7 +117,7 @@ jobs:
     #         ingen-lon: ${{needs.terraform-plan.result}}
     terraform-apply: 
         name: terraformapply
-        if: inputs.apply && github.event_name == 'push'
+        if: inputs.apply || github.event_name == 'push'
         needs: terraform-plan
         runs-on: ubuntu-latest
         environment: ${{ matrix.environment }}
@@ -129,7 +129,7 @@ jobs:
             matrix:
                 environment: 
                     - dev
-                    - prod
+                    # - prod
         outputs:
             kommerglassbilen: ${{steps.glassbilen.outputs.nagotannat}}
         steps:
