@@ -42,7 +42,7 @@ jobs:
             matrix:
                 environment: 
                     - dev
-                    # - prod
+                    - prod
         outputs:
             kommerglassbilen: ${{steps.glassbilen.outputs.nagotannat}}
         steps:
@@ -118,7 +118,7 @@ jobs:
             matrix:
                 environment: 
                     - dev
-                    # - prod
+                    - prod
         outputs:
             kommerglassbilen: ${{steps.glassbilen.outputs.nagotannat}}
         steps:
