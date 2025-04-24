@@ -18,6 +18,12 @@ on:
             azcopy:
                 type: boolean
                 required: true
+            plan:
+                type: boolean
+                required: true
+            apply:
+                type: boolean
+                required: true    
     push:
         # branches: main
 env:
@@ -32,6 +38,7 @@ permissions: write-all
 jobs:
     terraform-plan: 
         name: terraformplan
+        if: inputs.plan
         runs-on: ubuntu-latest
         # environment: ${{ matrix.environment }}
         defaults:
@@ -107,6 +114,7 @@ jobs:
     #         ingen-lon: ${{needs.terraform-plan.result}}
     terraform-apply: 
         name: terraformapply
+        if: inputs.apply
         needs: terraform-plan
         runs-on: ubuntu-latest
         environment: ${{ matrix.environment }}
