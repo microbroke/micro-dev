@@ -40,7 +40,7 @@ permissions: write-all
 jobs:
     terraform-plan: 
         name: terraformplan
-        if: inputs.plan
+        # if: inputs.plan
         runs-on: ubuntu-latest
         # environment: ${{ matrix.environment }}
         defaults:
@@ -72,8 +72,9 @@ jobs:
             #         $variable='Glassbilen'
             #         echo "::add-mask::$variable"
             #         "nagotannat=$variable" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
-            # - name: output
-            #   run: |
+            - name: output
+              run: |
+                write-host ${{ toJson(github) }}
             #         write-host ${{steps.glassbilen.outputs.nagotannat}}
             #         write-host ${{secrets.GITHUB_TOKEN}}
             #         gh variable set grillkorv --body "kokt"
