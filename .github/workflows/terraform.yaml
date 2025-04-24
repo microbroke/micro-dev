@@ -38,7 +38,7 @@ permissions: write-all
 jobs:
     terraform-plan: 
         name: terraformplan
-        if: inputs.plan
+        if: inputs.plan && github.event_name == 'push'
         runs-on: ubuntu-latest
         # environment: ${{ matrix.environment }}
         defaults:
@@ -114,7 +114,7 @@ jobs:
     #         ingen-lon: ${{needs.terraform-plan.result}}
     terraform-apply: 
         name: terraformapply
-        if: inputs.apply
+        if: inputs.apply && github.event_name == 'push'
         needs: terraform-plan
         runs-on: ubuntu-latest
         environment: ${{ matrix.environment }}
