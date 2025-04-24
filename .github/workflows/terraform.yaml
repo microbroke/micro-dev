@@ -40,7 +40,7 @@ permissions: write-all
 jobs:
     terraform-plan: 
         name: terraformplan
-        if: inputs.plan && github.event_name == 'push'
+        if: inputs.plan
         runs-on: ubuntu-latest
         # environment: ${{ matrix.environment }}
         defaults:
