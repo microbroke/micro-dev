@@ -14,6 +14,13 @@ terraform {
 }
 
 provider "azurerm" {
-  # Configuration options
+  subscription_id = var.subid
 }
 
+variable "subid" {
+
+}
+
+output "subid" {
+  value = var.subid
+}
