@@ -96,7 +96,7 @@ jobs:
                 #    write-host ($aztoken).Substring(0,50)
                 #    az group list -o tsv --query "[?name=='min-forsta-rg-01'].name"
                    terraform init -backend-config="storage_account_name=${{env.STORAGE_ACCOUNT_NAME}}"
-                   terraform plan -var='subid=${{env.AZURE_SUBSCRIPTION_ID}}'
+                   terraform plan -var-file=${{matrix.environment}}.tfvars
                 
     # terraform-glass: 
     #     runs-on: ubuntu-latest
@@ -173,4 +173,4 @@ jobs:
                 #    write-host ($aztoken).Substring(0,50)
                 #    az group list -o tsv --query "[?name=='min-forsta-rg-01'].name"
                    terraform init -backend-config="storage_account_name=${{env.STORAGE_ACCOUNT_NAME}}"
-                   terraform apply --auto-approve
+                   terraform apply --auto-approve -var-file=${{matrix.environment}}.tfvars
